@@ -6,5 +6,5 @@ export type LoginAction = ActionType<typeof actions>;
 export type LoginState = {
     id: string;
     name: string;
-    auth: string;
+    authentication: string;
 }

@@ -1,15 +1,16 @@
 import React from "react";
-import { BrowserRouter, Route, Switch, Link, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link, Redirect } from "react-router-dom";
 
 import App from "./views/App";
 import Dashboard from "./views/Dashboard";
 import Login from "./views/Login";
 import Mypage from "./views/Mypage";
-function requireLogin() {
+import Authentication from "./hooks/useAuthentication";
+import PrivateRoute from "./components/PrivateRoute";
 
-}
 
 function routes() {
+    console.log(Authentication());
     return (
         /*
             <BrowerRouter> : HTML5의 history API를 활용하여 UI를 업데이트
@@ -18,7 +19,7 @@ function routes() {
             <Route> : 요청뱓은 path에 해당하는 컴포넌트를 렌더링, exact를 사용하여 path가 완전히 동일할경우 매칭 ex) <Route exact path="/app" component={App} />
             <Link> : 링크 생성
         */
-        <BrowserRouter>
+        <Router>
             <nav>
                 <Link to="/app">App</Link> |
                 <Link to="/dashboard">dashboard</Link> |
@@ -29,10 +30,10 @@ function routes() {
                 <Route path="/app" component={App} />
                 <Route path="/dashboard" component={Dashboard} />
                 <Route path="/login" component={Login} />
-                <Route path="/mypage" component={Mypage} />
+                <PrivateRoute path="/mypage" component={Mypage} />
                 <Redirect from="*" to="/app" />
             </Switch>
-        </BrowserRouter>
+        </Router>
     )
 };
 

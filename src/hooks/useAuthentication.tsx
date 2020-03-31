@@ -3,5 +3,5 @@ import { RootState } from '../modules';
 
 export default function useAuthentication() {
     const authentication = useSelector((state: RootState) => state.login.authentication);
-    return authentication;
+    return authentication !== "" ? true : false
 }

@@ -22,7 +22,7 @@ const PrivateRoute = (props: PrivateRouteProps) => {
         <Route
             {...rest}
             render={(routeProps) =>
-                authentication === "true" ? (
+                authentication ? (
                     <Component {...routeProps} />
                 ) : (
                         <Redirect

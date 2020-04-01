@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
+import { useLocation, useHistory } from "react-router";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -48,8 +49,31 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function Login() {
+  const [email, setEmail] = useState('');
+  const [passwd, setPasswd] = useState('');
+  let location = useLocation();
+  let history = useHistory();
+  // let { from } = location.state || {from };
+
   const classes = useStyles();
   const { onLogin } = useLogin();
+
+  const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const onChangePasswd = (e: ChangeEvent<HTMLInputElement>) => {
+    setPasswd(e.target.value);
+  };
+  const onSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    onLogin(email, passwd);
+    setEmail('');
+    setPasswd('');
+    console.log(location);
+    const { from } = location.state as any || { from: { pathname: "/" } };
+    history.replace(from);
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -61,7 +85,7 @@ export default function Login() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={onSubmit}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -70,8 +94,10 @@ export default function Login() {
             id="email"
             label="Email Address"
             name="email"
+            value={email}
             autoComplete="email"
             autoFocus
+            onChange={onChangeEmail}
           />
           <TextField
             variant="outlined"
@@ -82,19 +108,20 @@ export default function Login() {
             label="Password"
             type="password"
             id="password"
+            value={passwd}
             autoComplete="current-password"
+            onChange={onChangePasswd}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           />
           <Button
-            type="button"
+            type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={onLogin}
           >
             Sign In
           </Button>

@@ -9,10 +9,10 @@ const initialState: LoginState = {
 };
 
 const loginReducer = createReducer<LoginState, LoginAction>(initialState, {
-    [LOGIN]: () =>
+    [LOGIN]: (state, { payload: data }) =>
         ({
-            id: 'login',
-            name: '로그인',
+            id: data[0],
+            name: data[1],
             authentication: 'value'
         }),
     [LOGOUT]: () =>

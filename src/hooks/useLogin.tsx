@@ -6,7 +6,10 @@ export default function useLogin() {
     const dispatch = useDispatch();
 
     const onLogin = useCallback(
-        () => dispatch(login()), [dispatch]
+        () => {
+            console.log();
+            dispatch(login())
+        }, [dispatch]
     );
     const onLogout = useCallback(
         () => dispatch(logout()), [dispatch]

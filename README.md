@@ -1,5 +1,13 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+## JSON-SERVER
+간단한 테스트를 위한 json-server
+```
+$ npx json-server ./data.json --poart 4000
+```
+
+
 ## Available Scripts
 
 In the project directory, you can run:

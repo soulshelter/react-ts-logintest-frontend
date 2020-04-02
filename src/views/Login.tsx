@@ -70,7 +70,6 @@ export default function Login() {
     onLogin(email, passwd);
     setEmail('');
     setPasswd('');
-    console.log(location);
     const { from } = location.state as any || { from: { pathname: "/" } };
     history.replace(from);
   };

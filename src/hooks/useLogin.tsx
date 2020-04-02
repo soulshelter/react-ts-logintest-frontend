@@ -8,7 +8,6 @@ export default function useLogin() {
     const onLogin = useCallback(
         (email: string, password: string) => {
             const loginData = [email, password];
-            console.log(email + ' / ' + password);
             dispatch(login(loginData))
         }, [dispatch]
     );

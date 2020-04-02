@@ -5,12 +5,10 @@ import App from "./views/App";
 import Dashboard from "./views/Dashboard";
 import Login from "./views/Login";
 import Mypage from "./views/Mypage";
-import Authentication from "./hooks/useAuthentication";
 import PrivateRoute from "./components/PrivateRoute";
 
 
 function routes() {
-    console.log(Authentication());
     return (
         /*
             <BrowerRouter> : HTML5의 history API를 활용하여 UI를 업데이트

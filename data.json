@@ -27,6 +27,6 @@
     }
   ],
   "auth": {
-    "authentication": ""
+    "authentication": "jwt-tokken"
   }
 }

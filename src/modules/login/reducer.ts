@@ -13,7 +13,7 @@ const loginReducer = createReducer<LoginState, LoginAction>(initialState, {
         ({
             id: data[0],
             name: data[1],
-            authentication: 'value'
+            authentication: data[2]
         }),
     [LOGOUT]: () =>
         ({

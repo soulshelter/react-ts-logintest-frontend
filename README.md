@@ -1,6 +1,50 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 
+## File Structure
+```
+React-Ts-LoginTest-Frontend
+│
+├── public
+├── src
+│   ├── api
+│   │   └── reqres.ts
+│   ├── assets
+│   │   ├── css
+│   │   │   ├── App.css
+│   │   │   └── index.css
+│   │   └── img
+│   │       └── logo.svg
+│   ├── components
+│   │   └── PrivateRoute.tsx
+│   ├── hooks
+│   │   ├── useAuthentication.tsx
+│   │   └── useLogin.tsx
+│   ├── modules
+│   │   ├── login
+│   │   │   ├── actions.ts
+│   │   │   ├── index.ts
+│   │   │   ├── reducer.ts
+│   │   │   └── types.ts
+│   │   └── index.ts
+│   ├── views
+│   │   ├── App.test.tsx
+│   │   ├── App.tsx
+│   │   ├── Dashboard.tsx
+│   │   ├── Login.tsx
+│   │   └── Mypage.tsx
+│   ├── index.tsx
+│   ├── react-app-env.d.ts
+│   ├── routes.tsx
+│   ├── serviceWorker.ts
+│   └── setupTests.ts
+├── data.json
+├── pakage.json
+├── README.md
+├── tsconfig.json
+└── yarn.lock    
+```
+
 ## JSON-SERVER
 간단한 테스트를 위한 json-server
 ```

@@ -7,4 +7,5 @@ export type LoginState = {
     id: string;
     name: string;
     authentication: string;
+    state: string;
 }

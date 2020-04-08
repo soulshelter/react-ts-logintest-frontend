@@ -1,5 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+# React TS LoginTest Frontend
+이 프로젝트는 [Create React App](https://github.com/facebook/create-react-app)로 생성되었습니다.
+react, typescript, react-redux- react-router, typesafe-actions를 사용하여 구현하였습니다.
 
 ## File Structure
 ```
@@ -45,12 +46,20 @@ React-Ts-LoginTest-Frontend
 └── yarn.lock    
 ```
 
-## JSON-SERVER
+## GetStart
+
+### JSON-SERVER
 간단한 테스트를 위한 json-server
 ```
-$ npx json-server ./data.json --poart 4000
+$ npx json-server ./data.json --port 4000
 ```
 
+### Create Project & Update
+typescript 3.8.3 이상부터 정상작동하기때문에 업그레이드가 필요합니다.
+```
+$ npx create-react-app react-ts-logintest-frontend
+$ yarn upgrade typescript@^3.8.3
+```
 
 ## Available Scripts
 

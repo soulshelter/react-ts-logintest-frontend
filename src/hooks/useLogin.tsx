@@ -1,29 +1,35 @@
-import { useDispatch } from 'react-redux';
-import { login, logout } from '../modules/login';
+import { useDispatch, useSelector } from 'react-redux';
+import { login, logout, loginSuccess, loginFailure } from '../modules/login';
 import { useCallback } from 'react';
-import { AuthResponse, getAuthentication } from '../api/reqres';
-import { AxiosResponse } from 'axios';
+import { getAuthentication } from '../api/reqres'
+import { RootState } from '../modules';
 
 
 export default function useLogin() {
     const dispatch = useDispatch();
 
     const onLogin = useCallback(
-        (email: string, password: string) => {
-            getAuthentication()
-                .then((response: AxiosResponse<AuthResponse>) => {
-                    console.log(response);
-                    const loginData = [email, password, response.data.authentication];
-                    dispatch(login(loginData))
-                })
-                .catch((e: Error) => { throw e; })
-        }, [dispatch]
-    );
+        async (email: string, password: string) => {
+            dispatch(login());
+            try {
+                let res = await getAuthentication();
+                let data = res.data;
+                console.log(data);
+                const loginData = [email, password, data.authentication];
+                dispatch(loginSuccess(loginData));
+            } catch (e) {
+                dispatch(loginFailure());
+            }
+
+        }, [dispatch]);
+    const loginState = useSelector((state: RootState) => state.login.authentication);
+
     const onLogout = useCallback(
         () => dispatch(logout()), [dispatch]
     );
 
     return {
+        loginState,
         onLogin,
         onLogout
     }

@@ -22,7 +22,7 @@
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.1",
+    "react-scripts": "^3.4.1",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",
@@ -42,12 +42,14 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "ie 11"
     ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 1 safari version"
+      "last 1 safari version",
+      "ie 11"
     ]
   }
 }

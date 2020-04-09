@@ -48,18 +48,71 @@ React-Ts-LoginTest-Frontend
 
 ## GetStart
 
-### JSON-SERVER
-간단한 테스트를 위한 json-server
-```
-$ npx json-server ./data.json --port 4000
-```
-
 ### Create Project & Update
-typescript 3.8.3 이상부터 정상작동하기때문에 업그레이드가 필요합니다.
+CRA를 사용하여 react-ts-logintest-frontend를 생성합니다.
 ```
-$ npx create-react-app react-ts-logintest-frontend
+$ npx create-react-app react-ts-logintest-frontend --typescript
+```
+typescript 3.7 버전과  eslint 2.24 버전과의 호환 문제가 있어 typescript 3.8.3로 업그레이드가 필요합니다.
+추후 CRA에서 typescript 3.8이상을 자동 생성하게 되면 업데이트 할 필요 없습니다.
+```
 $ yarn upgrade typescript@^3.8.3
 ```
+
+### Add Library
+필요한 라이브러리인 react-router, redux, axios, typesafe-actions를 추가합니다.
+``` 
+$ yarn add react-router-dom @types/react-router-dom react-redux @types/react-redux axios @types/axios typesafe-actions 
+```
+
+### IE 11 설정
+```
+$ yarn add react-app-polyfill
+```
+package.json에서 ie 11를 추가합니다.
+```
+"browserslist": {
+  "production": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all",
+    "ie 11"
+  ],
+  "development": [
+    "last 1 chrome version",
+    "last 1 firefox version",
+    "last 1 safari version",
+    "ie 11"
+  ]
+}
+```
+index.tsx 맨 위에 import 2개를 추가합니다.
+```
+import 'react-app-polyfill/ie11';
+import 'react-app-polyfill/stable';
+```
+IE 11 세팅이 완료되었습니다.   
+위 설정 후에도 IE에서 실행이 되지 않으면 node_modules/.cache를 삭제 후 다시 yarn start 하면 됩니다.
+
+### JSON-SERVER
+axios 연동을 위한 json-server를 생성 및 실행합니다.   
+최상위 폴더에 data.json를 생성 후 아래 내용을 입력합니다.
+```
+{
+  "auth": {
+    "authentication": "jwt-tokken"
+  }
+}
+```
+아래 명령어를 이용하여 json-server를 실행할 수 있습니다.
+```
+$ npx json-server ./data.json --port 4000
+
+localhost가 아닌 다른 호스트를 지정하기 위해선 --host 옵션을 추가하면 됩니다.
+$ npx json-server ./data.json --host 10.10.1.10 --port 4000
+```
+[http://localhost:4000/auth](http://localhost:4000/auth)를 접속하여 확인 할 수 있습니다.
+
 
 ## Available Scripts
 

@@ -22,12 +22,11 @@ export default function useLogin() {
             }
 
         }, [dispatch]);
-    const loginState = useSelector((state: RootState) => state.login.authentication);
+    const loginState = useSelector((state: RootState) => state.login.state);
 
     const onLogout = useCallback(
         () => dispatch(logout()), [dispatch]
     );
-
     return {
         loginState,
         onLogin,

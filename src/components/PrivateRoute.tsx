@@ -5,7 +5,7 @@ import {
     Redirect,
     RouteProps,
 } from 'react-router-dom';
-import Authentication from "../hooks/useAuthentication";
+import useLogin from "../hooks/useLogin";
 
 interface PrivateRouteProps extends RouteProps {
     // tslint:disable-next-line:no-any
@@ -15,14 +15,14 @@ interface PrivateRouteProps extends RouteProps {
 const PrivateRoute = (props: PrivateRouteProps) => {
     const { component: Component, ...rest } = props;
 
-    const authentication = Authentication();
-    console.log(authentication);
+    const { loginState } = useLogin();
+    console.log(loginState);
 
     return (
         <Route
             {...rest}
             render={(routeProps) =>
-                authentication ? (
+                loginState === "SUCCESS" ? (
                     <Component {...routeProps} />
                 ) : (
                         <Redirect

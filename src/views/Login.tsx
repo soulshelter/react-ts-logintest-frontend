@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState, useEffect } from 'react';
 import { useLocation, useHistory } from "react-router";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -56,7 +56,15 @@ export default function Login() {
   // let { from } = location.state || {from };
 
   const classes = useStyles();
-  const { onLogin } = useLogin();
+  const { onLogin, loginState } = useLogin();
+
+  useEffect(() => {
+    if (loginState === "SUCCESS") {
+      const { from } = location.state as any || { from: { pathname: "/" } };
+      history.replace(from);
+    }
+    else if (loginState === "WAITTING") console.log("WAITTING")
+  });
 
   const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -68,10 +76,8 @@ export default function Login() {
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     onLogin(email, passwd);
-    setEmail('');
-    setPasswd('');
-    const { from } = location.state as any || { from: { pathname: "/" } };
-    history.replace(from);
+    // setEmail('');
+    // setPasswd('');
   };
 
   return (

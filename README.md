@@ -17,7 +17,7 @@ React-Ts-LoginTest-Frontend
 │   │   └── img
 │   │       └── logo.svg
 │   ├── components
-│   │   └── PrivateRoute.tsx
+│   │   └── PrivateRoute.tsx 
 │   ├── hooks
 │   │   ├── useAuthentication.tsx
 │   │   └── useLogin.tsx
@@ -242,7 +242,7 @@ export default loginReducer;
 
 #### index
 index는 총 2가지가 필요합니다.   
-먼저 login의 `reducer`, `actions`, `types`를 외부로 보내줄 index입니다.
+먼저 login의 `reducer`, `actions`, `types`를 외부로 보내줄 index입니다.   
 `modules/login/index.ts`를 생성 후 `reducer`, `actions`, `types`을 그대로 export합니다.
 ```
 export { default } from './reducer'
@@ -263,6 +263,9 @@ const rootReducer = combineReducers({
 export default rootReducer;
 export type RootState = ReturnType<typeof rootReducer>;
 ```
+
+#### Redux Hooks
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).

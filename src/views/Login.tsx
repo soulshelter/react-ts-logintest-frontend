@@ -64,6 +64,7 @@ export default function Login() {
       history.replace(from);
     }
     else if (loginState === "WAITTING") console.log("WAITTING")
+    else if (loginState === "FAILURE") alert("로그인이 실패하였습니다.");
   });
 
   const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {

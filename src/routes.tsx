@@ -1,11 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch, Link, Redirect } from "react-router-dom";
 
-import App from "./views/App";
-import Dashboard from "./views/Dashboard";
-import Login from "./views/Login";
-import Mypage from "./views/Mypage";
-import PrivateRoute from "./components/PrivateRoute";
+import App from "views/App";
+import Dashboard from "views/Dashboard";
+import Login from "views/Login";
+import Mypage from "views/Mypage";
+import LoginPage from "views/LoginPage/LoginPage";
+import PrivateRoute from "components/PrivateRoute/PrivateRoute";
 
 
 function routes() {
@@ -22,13 +23,15 @@ function routes() {
                 <Link to="/app">App</Link> |
                 <Link to="/dashboard">dashboard</Link> |
                 <Link to="/login">login</Link> |
-                <Link to="/mypage">mypage</Link>
+                <Link to="/mypage">mypage</Link> |
+                <Link to="/loginpage">loginpage</Link>
             </nav>
             <Switch>
                 <Route path="/app" component={App} />
                 <Route path="/dashboard" component={Dashboard} />
                 <Route path="/login" component={Login} />
                 <PrivateRoute path="/mypage" component={Mypage} />
+                <Route path="/loginpage" component={LoginPage} />
                 <Redirect from="*" to="/app" />
             </Switch>
         </Router>

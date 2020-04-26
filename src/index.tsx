@@ -10,11 +10,21 @@ import rootReducer from './modules';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import logger from 'redux-logger';
 
+import { theme } from 'assets/style/Theme';
+import { StylesProvider, ThemeProvider as MuiThemeProvider } from '@material-ui/styles';
+import { ThemeProvider as StyledThemeProvider } from 'styled-components';
+
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(logger)));
 
 ReactDOM.render(
   <Provider store={store}>
-    <Routes />
+    <StylesProvider injectFirst>
+      <StyledThemeProvider theme={theme}>
+        <MuiThemeProvider theme={theme}>
+          <Routes />
+        </MuiThemeProvider>
+      </StyledThemeProvider>
+    </StylesProvider>
   </Provider>,
   document.getElementById("root")
 );

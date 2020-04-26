@@ -5,7 +5,7 @@ import {
     Redirect,
     RouteProps,
 } from 'react-router-dom';
-import useLogin from "../hooks/useLogin";
+import useLogin from "hooks/useLogin";
 
 interface PrivateRouteProps extends RouteProps {
     // tslint:disable-next-line:no-any
